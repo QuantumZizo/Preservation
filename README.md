@@ -1,28 +1,16 @@
+# Preservation
+Preservation is a mod for Minecraft which adds the feature of food spoilage and consequently preservation, upping the difficulty in a Vintage Story like style.
 
-Installation information
-=======
+## Requirements
+(Optional) [Cold Sweat](https://modrinth.com/mod/cold-sweat); While not required, Cold Sweat (with its temperature system) increases the accuracy of climate affecting the spoilage of food,
+while also allowing you to see the actual ambient temperature in your area.
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions at [github](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+## Description
+This mod adds the ability for foods, like fruits, vegetables, and meats, to spoil as they would in the real world, preventing you from simply throwing food in a chest and then forgetting.
+Left improperly stored, these foods will decay completely into rot, which does nothing but serve as food for the composter.
+Along with that, methods to keep your food fresh and nourishing are present, such as sealed containers, cellars, and the curing of meats.
+If you're a Vintage Story player, you might recognize these features because they are inspired off of Vintage Story, and some parts are balanced similarly as well.
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
-
-> **Note**: For Eclipse, use tasks in `Launch Group` instead of ones founds in `Java Application`. A preparation task must run before launching the game. NeoGradle uses launch groups to do these subsequently.
-
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
-
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license, if you do not agree with it you can change your mapping names to other crowdsourced names in your 
-build.gradle. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
-
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+## Details
+This mod is quite configurable via the config file, in that you can change the global spoilage rate or that of specific food groups.
+Nothing needs to be done to add this mod to a modpack, please feel free to.
