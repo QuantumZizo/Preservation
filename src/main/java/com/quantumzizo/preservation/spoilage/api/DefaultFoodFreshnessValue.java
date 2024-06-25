@@ -1,7 +1,5 @@
 package com.quantumzizo.preservation.spoilage.api;
 
-import net.minecraft.world.item.Item;
-
 public class DefaultFoodFreshnessValue {;
     private final int f;
     private final int s;

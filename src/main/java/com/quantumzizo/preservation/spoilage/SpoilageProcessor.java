@@ -1,24 +1,23 @@
 package com.quantumzizo.preservation.spoilage;
 
 import com.quantumzizo.preservation.Preservation;
-import com.quantumzizo.preservation.registry.ModBlocks;
 import com.quantumzizo.preservation.registry.ModDataComponents;
 import com.quantumzizo.preservation.spoilage.api.DefaultFoodFreshnessValue;
 import com.quantumzizo.preservation.spoilage.api.FoodFreshnessRecord;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class SpoilageProcessor {
     @SubscribeEvent
-    private void attachFoodFreshness(ModifyDefaultComponentsEvent event) {
+    public static void attachFoodFreshness(ModifyDefaultComponentsEvent event) {
         int totalItemsAttached = 0;
 
         Set<Item> items = defaultFoodFreshnessValues.keySet();
@@ -28,23 +27,21 @@ public class SpoilageProcessor {
                     builder.set(ModDataComponents.FOOD_FRESHNESS.get(), new FoodFreshnessRecord(getFreshnessValue(item), getSpoilageValue(item), false))
             );
 
-            if (item.components().has(ModDataComponents.FOOD_FRESHNESS.value())) totalItemsAttached++;
+            if (item.components().has(ModDataComponents.FOOD_FRESHNESS.get())) totalItemsAttached++;
         }
 
-        Preservation.LOGGER.debug("Attached the freshness component to {} items.", totalItemsAttached);
+        Preservation.LOGGER.info("Attached freshness component to {} item(s).", totalItemsAttached);
     }
 
-    private final Map<Item, DefaultFoodFreshnessValue> defaultFoodFreshnessValues = new HashMap<Item, DefaultFoodFreshnessValue>() {{
+    private static final Map<Item, DefaultFoodFreshnessValue> defaultFoodFreshnessValues = new HashMap<>() {{
         put(Items.COOKED_BEEF, new DefaultFoodFreshnessValue(120, 36));
     }};
 
-
-    private int getFreshnessValue(Item item) {
+    private static int getFreshnessValue(Item item) {
         return defaultFoodFreshnessValues.get(item).getDefaultFreshnessTime();
     }
 
-    private int getSpoilageValue(Item item) {
+    private static int getSpoilageValue(Item item) {
         return defaultFoodFreshnessValues.get(item).getDefaultSpoilageTime();
     }
-
 }

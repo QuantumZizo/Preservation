@@ -23,6 +23,6 @@ public class Preservation {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        LOGGER.info("hello world");
+
     }
 }
